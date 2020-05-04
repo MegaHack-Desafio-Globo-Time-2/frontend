@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-import gitHubBg from '../assets/github-bg.svg';
-
-
 export default createGlobalStyle`
 
   * {
@@ -13,12 +10,13 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #f0f0f5 url(${gitHubBg}) no-repeat 70% top;
+    background: #1F1F1F;
     -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', sans-serif;
   }
 
   body, input, button, table {
-    font: 14px Roboto, sans-serif
+    font: 14px 'Open Sans', sans-serif;
   }
 
   #root {
@@ -31,4 +29,4 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-`
+`;
