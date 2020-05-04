@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
-import ItemsCarousel from 'react-items-carousel';
+// import Slider from 'react-styled-carousel';
+// import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 import { Container, Header, Track, Title } from './styles';
 import SliderItem from './SliderItem';
 import estacao from '../../assets/estacao.jpg';
@@ -12,7 +14,7 @@ interface Item {
   src: any;
 }
 
-const Slider: React.FC = () => {
+const CustomSlider: React.FC = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 40;
 
@@ -66,23 +68,12 @@ const Slider: React.FC = () => {
         <FaChevronRight size={16} color="#fff" />
       </Header>
       <Track>
-        <ItemsCarousel
-          requestToChangeActive={setActiveItemIndex}
-          activeItemIndex={activeItemIndex}
-          numberOfCards={2}
-          gutter={20}
-          leftChevron={<button type="button">{'<'}</button>}
-          rightChevron={<button type="button">{'>'}</button>}
-          outsideChevron
-          chevronWidth={chevronWidth}
-        >
-          {items.map((item) => (
-            <SliderItem data={item} />
-          ))}
-        </ItemsCarousel>
+        {items.map((item) => (
+          <SliderItem data={item} />
+        ))}
       </Track>
     </Container>
   );
 };
 
-export default Slider;
+export default CustomSlider;

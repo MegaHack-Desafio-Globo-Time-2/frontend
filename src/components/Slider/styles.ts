@@ -29,6 +29,6 @@ export const Track = styled.div`
   margin: 0 4.5%;
   overflow: hidden;
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
   /* width: 15.6167%; */
 `;
