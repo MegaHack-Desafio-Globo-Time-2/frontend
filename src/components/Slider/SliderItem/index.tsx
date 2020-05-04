@@ -2,27 +2,37 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Container,
-  Figure,
-  Placeholder,
-  Wrapper,
-  ThumbWrapper,
-  Thumb,
+  // Figure,
+  // Placeholder,
+  // Wrapper,
+  // ThumbWrapper,
+  // Thumb,
 } from './styles';
 
-const Slider: React.FC = () => {
+interface Item {
+  title: string;
+  link: string;
+  src: any;
+}
+
+interface SliderProps {
+  data: Item;
+}
+
+const Slider: React.FC<SliderProps> = ({ data }) => {
   return (
-    <Container>
-      <Figure>
-        <Placeholder />
-        <Wrapper>
-          <Link to="details">
-            <ThumbWrapper>
-              <Thumb />
-            </ThumbWrapper>
-          </Link>
-        </Wrapper>
-      </Figure>
-    </Container>
+    <Container src={data.src} />
+    //   <Figure>
+    //     <Placeholder />
+    //     <Wrapper>
+    //       <Link to="details">
+    //         <ThumbWrapper>
+    //           <Thumb src={data.src} />
+    //         </ThumbWrapper>
+    //       </Link>
+    //     </Wrapper>
+    //   </Figure>
+    // </Container>
   );
 };
 
