@@ -5,14 +5,16 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 
 import GlobalStyle from './styles/global';
+import Header from './components/Header';
 
 const App: React.FC = () => (
   <>
     <BrowserRouter>
-      <Routes/>
+      <Header />
+      <Routes />
     </BrowserRouter>
-    <GlobalStyle/>
+    <GlobalStyle />
   </>
-)
+);
 
 export default App;

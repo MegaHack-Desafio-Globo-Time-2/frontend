@@ -12,18 +12,22 @@ export default createGlobalStyle`
   body {
     background: #1F1F1F;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Open Sans', sans-serif;
+    font: 19px 'Open Sans', sans-serif;
+    color: #fff;
   }
 
   body, input, button, table {
-    font: 14px 'Open Sans', sans-serif;
+    font: 16px 'Open Sans', sans-serif;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
 
-  #root {
+  /* #root {
     margin: 0 auto;
     padding: 40px 20px;
     max-width: 960px;
-  }
+  } */
 
   button {
     cursor: pointer;

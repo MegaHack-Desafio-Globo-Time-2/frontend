@@ -1,7 +1,18 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 
-import { Title, Form, Repositories, Container, Error } from './styles';
+import Hightlight from '../../components/Highlight';
+import Offer from '../../components/Offer';
+import Slider from '../../components/Slider';
 
-const Dashboard: React.FC = () => <div />;
+const Dashboard: React.FC = () => {
+  return (
+    <>
+      <Hightlight />
+      <Offer>
+        <Slider />
+      </Offer>
+    </>
+  );
+};
 
 export default Dashboard;
