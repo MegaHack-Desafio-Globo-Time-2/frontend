@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 
 import GridPreferences from '../../components/GridPreferences';
+import PreferenceButton from '../../components/Button/Preference';
 
 import {
   FullPage,
@@ -10,6 +11,8 @@ import {
   Description,
   DescriptionHighlight,
   CenterContainer,
+  ButtonsContainer,
+  PreviousDiv,
 } from './styles';
 
 interface PreferenceContent {
@@ -83,22 +86,68 @@ const content: Array<PreferenceContent> = [
 ];
 
 const Preferences: React.FC = () => {
-  const [prefIndex] = useState(1);
+  const [prefIndex, setPrefIndex] = useState(0);
+  const [selected, setSelected] = useState<string[]>([]);
   console.log('PREF IST', prefIndex);
 
   const { options, title, subtitle, subtitleHighlight } = content[prefIndex];
   const [titleBegin, titleHightlight, titleEnd] = title.split('|');
+
+  const goBack = () => {
+    setPrefIndex(prefIndex - 1);
+  };
+
+  const goHome = () => {
+    window.open('/');
+  };
+
+  const goFoward = () => {
+    setPrefIndex(prefIndex + 1);
+  };
+
+  const onItemSelected = (name: string) => {
+    setSelected(
+      selected.includes(name)
+        ? selected.filter((option) => option !== name)
+        : [...selected, name],
+    );
+  };
+
+  const renderButtons = () => {
+    if (prefIndex === content.length - 1) {
+      return (
+        <PreferenceButton onclick={goHome} stateType="subscribe">
+          Salvar preferências
+        </PreferenceButton>
+      );
+    }
+    if (prefIndex === 0) {
+      return (
+        <PreferenceButton onclick={goFoward} stateType="subscribe">
+          Continuar
+        </PreferenceButton>
+      );
+    }
+    return (
+      <>
+        <PreferenceButton onclick={goFoward} stateType="subscribe">
+          Continuar
+        </PreferenceButton>
+        <PreferenceButton onclick={goFoward} stateType="info">
+          Pular etapa
+        </PreferenceButton>
+      </>
+    );
+  };
 
   return (
     <FullPage>
       <CenterContainer>
         <Title>
           {prefIndex ? (
-            <FaChevronLeft
-              size={20}
-              color="white"
-              style={{ marginRight: '20px' }}
-            />
+            <PreviousDiv onClick={() => goBack()}>
+              <FaChevronLeft size={20} color="white" />
+            </PreviousDiv>
           ) : (
             <></>
           )}
@@ -109,7 +158,12 @@ const Preferences: React.FC = () => {
           {subtitle}
           <DescriptionHighlight>{subtitleHighlight}</DescriptionHighlight>
         </Description>
-        <GridPreferences contentList={options} />
+        <GridPreferences
+          contentList={options}
+          onItemSelected={onItemSelected}
+          selectedItens={selected}
+        />
+        <ButtonsContainer>{renderButtons()}</ButtonsContainer>
       </CenterContainer>
     </FullPage>
   );

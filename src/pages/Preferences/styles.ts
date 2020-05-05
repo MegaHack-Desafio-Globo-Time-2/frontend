@@ -33,3 +33,17 @@ export const Description = styled.p`
 export const DescriptionHighlight = styled.span`
   color: white;
 `;
+
+export const ButtonsContainer = styled.div`
+  margin-top: 20px;
+`;
+
+export const PreviousDiv = styled.span`
+  padding: 0px 10px;
+  border-radius: 50%;
+  margin-right: 15px;
+  &:hover {
+    background-color: hsla(0, 0%, 40%, 0.6);
+    border-color: hsla(0, 0%, 40%, 0.6);
+  }
+`;

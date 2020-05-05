@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Grid3x4 = styled.div`
   max-width: 1000px;
@@ -9,15 +9,30 @@ export const Grid3x4 = styled.div`
   grid-template-rows: auto;
 `;
 
-export const GridItem = styled.div`
+interface GridItemProps {
+  selected: boolean;
+}
+
+export const GridItem = styled.div<GridItemProps>`
   color: white;
-  background-color: #3C3C3A;
+  background-color: #3c3c3a;
   height: 110px;
   position: relative;
   &:hover {
-    background-color: hsla(0, 0%, 40%, 0.6);
-    border-color: hsla(0, 0%, 40%, 0.6);
+    background-color: #3c3c3a80;
+    color: #ffffff80;
   }
+  &:hover .div-hover {
+    display: block;
+  }
+  ${(props) =>
+    props.selected &&
+    css`
+      background-color: #f31d1d;
+      &:hover {
+        background: #f31d1d80;
+      }
+    `}
 `;
 
 export const GridContent = styled.div`
@@ -28,6 +43,7 @@ export const GridContent = styled.div`
 `;
 
 export const GridContentHover = styled.div`
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
