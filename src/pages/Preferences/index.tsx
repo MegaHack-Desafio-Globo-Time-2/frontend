@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 
+import { Link } from 'react-router-dom';
 import GridTeams from '../../components/GridTeams';
 import GridPreferences from '../../components/GridPreferences';
 import PreferenceButton from '../../components/Button/Preference';
 
 import atheletico from '../../assets/serieA/Athletico-PR.svg';
+import { useShowHeader } from '../../hooks/showHeader';
 
 import {
   FullPage,
@@ -145,9 +147,11 @@ const Preferences: React.FC = () => {
   const renderButtons = () => {
     if (prefIndex === content.length - 1) {
       return (
-        <PreferenceButton onclick={goHome} stateType="subscribe">
-          Salvar preferências
-        </PreferenceButton>
+        <Link to="/">
+          <PreferenceButton onclick={() => {}} stateType="subscribe">
+            Salvar preferências
+          </PreferenceButton>
+        </Link>
       );
     }
     if (prefIndex === 0) {
@@ -168,6 +172,12 @@ const Preferences: React.FC = () => {
       </>
     );
   };
+
+  const { showHeader } = useShowHeader();
+
+  useEffect(() => {
+    showHeader(false);
+  }, []);
 
   return (
     <FullPage>

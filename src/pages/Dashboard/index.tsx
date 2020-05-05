@@ -8,6 +8,7 @@ import highlight from '../../assets/highlight.jpg';
 import estacao from '../../assets/estacao.jpg';
 import blackBox from '../../assets/black-box.jpg';
 import { usePreference } from '../../hooks/preference';
+import { useShowHeader } from '../../hooks/showHeader';
 
 interface Item {
   title: string;
@@ -23,11 +24,16 @@ interface Item {
 const Dashboard: React.FC = () => {
   const [filtered, setFiltered] = useState<Item[]>([]);
   const { items, preferences } = usePreference();
+  const { showHeader } = useShowHeader();
 
   useEffect(() => {
+    showHeader(true);
     const filterItems = items.filter((item) =>
       item.categories.includes('reality'),
     );
+
+    // const found = arr1.some(r=> arr2.includes(r));
+
     console.log('filter', filterItems, items);
     filterItems && setFiltered([...filterItems]);
   }, [preferences]);
