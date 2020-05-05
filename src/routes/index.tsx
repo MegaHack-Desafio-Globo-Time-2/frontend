@@ -7,7 +7,7 @@ import ContentDetail from '../pages/ContentDetail';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/contents/:id" component={ContentDetail} />
+    <Route path="/content/:id" component={ContentDetail} />
   </Switch>
 );
 

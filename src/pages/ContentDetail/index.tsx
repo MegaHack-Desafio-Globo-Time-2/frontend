@@ -1,11 +1,63 @@
-import React, { useState, useEffect } from 'react';
-// import { useRouteMatch, Link } from 'react-router-dom';
-// import { Header, RepositoryInfo, Issues } from './styles';
-// import { FiChevronLeft, FiChevronRight, FiAlertCircle, FiStar, FiGitBranch } from 'react-icons/fi';
-// import logo from '../../assets/logo.svg';
-// import logoMin from '../../assets/logo-min.svg';
-// import api from '../../services/api';
+import React, { useState, useEffect, FormEvent } from 'react';
 
-const ContentDetail: React.FC = () => <div />;
+import algoliasearch from 'algoliasearch/lite';
+import {
+  InstantSearch,
+  SearchBox,
+  Hits,
+  Configure,
+} from 'react-instantsearch-dom';
+import { useRouteMatch } from 'react-router-dom';
+import Hightlight from '../../components/Highlight';
+import Offer from '../../components/Offer';
+import Slider from '../../components/Slider';
+import headlineBbb from '../../assets/headline1.png';
+import highlightBbb from '../../assets/highlight.jpg';
+import Tabs from '../../components/Tabs';
+import TCItem from '../../components/TCItem';
+import { usePreference } from '../../hooks/preference';
 
-export default ContentDetail;
+interface ContentParams {
+  id: string;
+}
+
+const searchClient = algoliasearch(
+  '4QY1VFRTEI',
+  'cc270b4bdedef830c10fc96247f2dd50',
+);
+
+const Dashboard: React.FC = () => {
+  const { params } = useRouteMatch<ContentParams>();
+  const { items } = usePreference();
+  const content = items[Number(params.id)];
+  // const filtered = [];
+  return (
+    <>
+      <Hightlight
+        title={content.title}
+        highlightImg={content.highlight}
+        headlineImg={headlineBbb}
+      >
+        {content.desc}
+      </Hightlight>
+
+      <Offer>
+        <Tabs />
+        {/* <InstantSearch indexName="desafioglobo" searchClient={searchClient}>
+          <RefinementList attribute="content" defaultRefinement={['bbb']} />
+          <Configure search={{ query: 'bbb' }} />
+          <SearchBox />
+          <Hits />
+        </InstantSearch> */}
+
+        {/* <Slider items={} /> */}
+      </Offer>
+      <Offer>
+        {/* <Slider items={filtered} /> */}
+        <TCItem />
+      </Offer>
+    </>
+  );
+};
+
+export default Dashboard;

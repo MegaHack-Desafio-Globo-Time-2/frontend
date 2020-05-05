@@ -5,61 +5,26 @@ import { FaChevronRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Container, Header, Track, Title } from './styles';
 import SliderItem from './SliderItem';
-import estacao from '../../assets/estacao.jpg';
-import blackBox from '../../assets/black-box.jpg';
 
 interface Item {
   title: string;
   link: string;
   src: any;
+  type: string;
+  id: string;
+  highlight: any;
+  desc: string;
 }
 
-const CustomSlider: React.FC = () => {
+interface CustomSliderProps {
+  items: Item[];
+  width?: string;
+  hasTitles?: boolean;
+}
+
+const CustomSlider: React.FC<CustomSliderProps> = ({ items }) => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 40;
-
-  const [items, setItems] = useState([
-    {
-      title: 'Estação Temple',
-      link: '',
-      src: estacao,
-    },
-    {
-      title: 'Black Box',
-      link: '',
-      src: blackBox,
-    },
-    {
-      title: 'Estação Temple',
-      link: '',
-      src: estacao,
-    },
-    {
-      title: 'Black Box',
-      link: '',
-      src: blackBox,
-    },
-    {
-      title: 'Estação Temple',
-      link: '',
-      src: estacao,
-    },
-    {
-      title: 'Black Box',
-      link: '',
-      src: blackBox,
-    },
-    {
-      title: 'Estação Temple',
-      link: '',
-      src: estacao,
-    },
-    {
-      title: 'Black Box',
-      link: '',
-      src: blackBox,
-    },
-  ]);
 
   return (
     <Container>

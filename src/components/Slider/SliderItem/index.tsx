@@ -13,6 +13,9 @@ interface Item {
   title: string;
   link: string;
   src: any;
+  id: string;
+  highlight: any;
+  desc: string;
 }
 
 interface SliderProps {
@@ -21,7 +24,9 @@ interface SliderProps {
 
 const Slider: React.FC<SliderProps> = ({ data }) => {
   return (
-    <Container src={data.src} />
+    <Link style={{ width: '100%' }} key={data.title} to={`/content/${data.id}`}>
+      <Container src={data.src} />
+    </Link>
     //   <Figure>
     //     <Placeholder />
     //     <Wrapper>

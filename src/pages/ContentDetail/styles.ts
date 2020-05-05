@@ -28,31 +28,29 @@ export const Header = styled.header`
   }
 
   @media (max-width: 768px) {
-      flex-direction: row-reverse;
+    flex-direction: row-reverse;
 
-      svg {
-        width: 42px;
-        height: 42px;
-        color: #3a3a3a;
+    svg {
+      width: 42px;
+      height: 42px;
+      color: #3a3a3a;
+    }
 
-      }
+    a {
+      font-size: 1.2rem;
+    }
 
-      a {
-        font-size: 1.2rem;
-      }
+    #logo {
+      display: none;
+    }
 
-      #logo {
-        display: none;
-      }
-
-      #logoMin {
-        display: block;
-        width: 35px;
-        height: 35px;
-      }
+    #logoMin {
+      display: block;
+      width: 35px;
+      height: 35px;
+    }
   }
-
-`
+`;
 
 export const RepositoryInfo = styled.section`
   margin-top: 80px;
@@ -98,7 +96,6 @@ export const RepositoryInfo = styled.section`
     margin-top: 40px;
 
     li {
-
       /* text-align: center; */
 
       & + li {
@@ -120,46 +117,43 @@ export const RepositoryInfo = styled.section`
         margin-top: 4px;
         color: #3b3b4d;
       }
-
-
     }
 
     @media (max-width: 768px) {
-        justify-content: center;
-        align-items: center;
+      justify-content: center;
+      align-items: center;
 
-        text-align: center;
+      text-align: center;
 
-        li {
-          flex: 33%;
+      li {
+        flex: 33%;
 
-          margin: 0;
+        margin: 0;
 
-          div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
-
-          svg {
-            display: block;
-            margin-bottom: 1rem;
-            color: #3b3b4d;
-          }
-
-          strong {
-            font-size: 1.2rem;
-          }
-
-          span {
-            display: none;
-          }
+        div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
+
+        svg {
+          display: block;
+          margin-bottom: 1rem;
+          color: #3b3b4d;
+        }
+
+        strong {
+          font-size: 1.2rem;
+        }
+
+        span {
+          display: none;
+        }
+      }
     }
   }
-`
-
+`;
 
 export const Issues = styled.div`
   margin-top: 80px;
@@ -192,7 +186,7 @@ export const Issues = styled.div`
 
       strong {
         font-size: 20px;
-        color: #3D3D4D;
+        color: #3d3d4d;
       }
 
       p {
@@ -200,14 +194,11 @@ export const Issues = styled.div`
         color: #a8a8b3;
         margin-top: 4px;
       }
-
     }
 
     svg {
       margin-left: auto;
       color: #cbcbd6;
     }
-
-
   }
-`
+`;

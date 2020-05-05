@@ -1,6 +1,5 @@
 import React from 'react';
 import highlight from '../../assets/highlight.jpg';
-import headlineImage from '../../assets/headline1.png';
 
 import {
   Container,
@@ -14,31 +13,40 @@ import {
 } from './styles';
 import Button from '../Button';
 
-const Highlight: React.FC = () => {
+interface HighlightProps {
+  headlineImg: any;
+  highlightImg: any;
+  title: string;
+}
+
+const Highlight: React.FC<HighlightProps> = ({
+  children,
+  highlightImg,
+  headlineImg,
+  title = '',
+}) => {
   return (
     <Container>
       <HilightBackground>
-        <img src={highlight} alt="BlackBox" />
+        <img src={highlightImg} alt="BlackBox" />
       </HilightBackground>
       <HighlightContent>
         <Headline>
-          <HeadlinePic>
-            <source
-              srcSet="https://s2.glbimg.com/fM5Zspxz7b_BYxBTqxmCDSmaCDk=/fit-in/0x364/filters:fill(transparent)/https://i.s3.glbimg.com/v1/AUTH_c3c606ff68e7478091d1ca496f9c5625/internal_photos/bs/2020/I/4/CQglGPSJSG6kyVEavOJw/2020-851-black-box-logo-destaque.png"
-              media="(min-width: 768px)"
-            />
-            <HeadlineImg
-              src={headlineImage}
-              role="presentation"
-              alt="Black Box"
-            />
-          </HeadlinePic>
+          {!title ? (
+            <HeadlinePic>
+              <source srcSet={headlineImg} media="(min-width: 768px)" />
+              <HeadlineImg
+                src={headlineImg}
+                role="presentation"
+                alt="Black Box"
+              />
+            </HeadlinePic>
+          ) : (
+            title
+          )}
         </Headline>
         <Description>
-          <p>
-            Uma médica estuda mistérios do cérebro enquanto luta contra o
-            próprio transtorno
-          </p>
+          <p>{children}</p>
         </Description>
         <Actions>
           <Button to="experimente" stateType="subscribe">

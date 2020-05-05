@@ -6,13 +6,16 @@ import Routes from './routes';
 
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
+import AppProvider from './hooks';
 
 const App: React.FC = () => {
   return (
     <>
       <BrowserRouter>
         <Header />
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </BrowserRouter>
       <GlobalStyle />
     </>
