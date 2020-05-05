@@ -15,8 +15,6 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <AppProvider>
-          {headerIsShow && <Header />}
-
           <Routes />
         </AppProvider>
       </BrowserRouter>

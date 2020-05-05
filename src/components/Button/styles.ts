@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { grayscale, lighten } from 'polished';
+import { grayscale, lighten, darken } from 'polished';
 
 interface ButtonProps {
-  stateType: 'subscribe' | 'info';
+  stateType: 'subscribe' | 'info' | 'watch';
 }
 
 export const LinkContainer = styled(Link)`
   color: #fff;
 
-  display: flex;
+  /* display: flex; */
 
   justify-content: center;
   text-decoration: none;
@@ -22,6 +22,9 @@ export const LinkContainer = styled(Link)`
 
 export const Container = styled.button<ButtonProps>`
   padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   font-family: 'Open Sans', sans-serif;
   border: 2px solid rgb(243, 29, 29);
@@ -50,4 +53,22 @@ export const Container = styled.button<ButtonProps>`
         color: ${lighten(0.1, '#888')};
       }
     `}
+
+  ${(props) =>
+    props.stateType === 'watch' &&
+    css`
+      border-color: #fff;
+      background-color: #fff;
+      color: #333;
+
+      &:hover {
+        background: ${darken(0.1, '#fff')};
+        border-color: ${darken(0.1, '#fff')};
+        color: ${darken(0.1, '#ccc')};
+      }
+    `}
+
+    svg {
+    margin-right: 10px;
+  }
 `;

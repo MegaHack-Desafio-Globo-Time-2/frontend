@@ -9,6 +9,7 @@ import estacao from '../../assets/estacao.jpg';
 import blackBox from '../../assets/black-box.jpg';
 import { usePreference } from '../../hooks/preference';
 import { useShowHeader } from '../../hooks/showHeader';
+import Header from '../../components/Header';
 
 interface Item {
   title: string;
@@ -35,14 +36,12 @@ const Dashboard: React.FC = () => {
     preferences.realities.length > 0 && filterItems.push(items[0]);
     preferences.teams.length > 0 && filterItems.push(items[1]);
 
-    // // const found = arr1.some(r=> arr2.includes(r));
-
-    // console.log('filter', filterItems, items);
     filterItems && setFiltered([...filterItems]);
   }, [preferences, showHeader, items]);
 
   return (
     <>
+      <Header />
       <Hightlight title="" headlineImg={headlineImage} highlightImg={highlight}>
         Uma médica estuda mistérios do cérebro enquanto luta contra o próprio
         transtorno

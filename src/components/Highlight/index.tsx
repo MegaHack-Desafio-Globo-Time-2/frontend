@@ -17,6 +17,7 @@ interface HighlightProps {
   headlineImg: any;
   highlightImg: any;
   title: string;
+  mainButtonType?: 'subscribe' | 'info' | 'watch';
 }
 
 const Highlight: React.FC<HighlightProps> = ({
@@ -24,6 +25,7 @@ const Highlight: React.FC<HighlightProps> = ({
   highlightImg,
   headlineImg,
   title = '',
+  mainButtonType = 'subscribe',
 }) => {
   return (
     <Container>
@@ -49,8 +51,8 @@ const Highlight: React.FC<HighlightProps> = ({
           <p>{children}</p>
         </Description>
         <Actions>
-          <Button to="experimente" stateType="subscribe">
-            Experimente grátis
+          <Button to="#" stateType={mainButtonType}>
+            {mainButtonType === 'watch' ? 'Assista' : 'Experimente grátis'}
           </Button>
           <Button to="mais" stateType="info">
             Veja mais

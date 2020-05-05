@@ -14,7 +14,6 @@ export const TabsList = styled.ul`
 `;
 
 export const TabItem = styled.li`
-  border-bottom: 4px solid #333;
   padding: 24px 4px;
   font-weight: 600;
   color: #ccc;
@@ -29,11 +28,7 @@ export const TabItem = styled.li`
     color: rgb(243, 29, 29);
   }
 
-  &.tudoConectado::before {
-    content: '';
-    height: 2px;
-    background: #fff;
-    bottom: 0;
-    width: 100%;
+  &.tudoConectado {
+    border-bottom: 4px solid #333;
   }
 `;

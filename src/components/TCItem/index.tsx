@@ -1,24 +1,18 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, ThumbTitle } from './styles';
 
-interface Item {
-  title: string;
-  link: string;
-  src: any;
-  id: string;
-  highlight: any;
-  desc: string;
-}
+import flay from '../../assets/music/flay.jpg';
 
 interface SliderProps {
-  data: Item;
+  data: any;
 }
 
 const TCItem: React.FC<SliderProps> = ({ data }) => {
   return (
     <Container>
-      <div />
+      <img src={data.src} alt="Thumb" />
+      <ThumbTitle>{data.title}</ThumbTitle>
     </Container>
   );
 };

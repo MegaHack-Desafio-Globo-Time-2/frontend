@@ -10,7 +10,7 @@ import user from '../../assets/user-pic.svg';
 const Header: React.FC = () => {
   return (
     <Container>
-      <NavLink className="header-logo" to="algum">
+      <NavLink className="header-logo" to="/dashboard">
         <img src={globoPlay} alt="GloboPlay" />
       </NavLink>
       <nav>

@@ -4,17 +4,12 @@ import { FaChevronRight } from 'react-icons/fa';
 // import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import { Container, Header, Track, Title } from './styles';
-import SliderItem from './SliderItem';
+// import SliderItem from './SliderItem';
 import TCItem from '../TCItem';
 
 interface Item {
   title: string;
-  link: string;
   src: any;
-  type: string;
-  id: string;
-  highlight: any;
-  desc: string;
 }
 
 interface CustomSliderProps {
@@ -41,7 +36,7 @@ const CustomSlider: React.FC<CustomSliderProps> = ({
       </Header>
       <Track>
         {items.map((item) => (
-          <SliderItem key={item.title} data={item} />
+          <TCItem key={item.title} data={item} />
         ))}
       </Track>
     </Container>
