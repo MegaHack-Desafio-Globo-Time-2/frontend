@@ -24,7 +24,11 @@ interface SliderProps {
 
 const Slider: React.FC<SliderProps> = ({ data }) => {
   return (
-    <Link style={{ width: '100%' }} key={data.title} to={`/content/${data.id}`}>
+    <Link
+      style={{ width: '200px', marginRight: '20px' }}
+      key={data.title}
+      to={`/content/${data.id}`}
+    >
       <Container src={data.src} />
     </Link>
     //   <Figure>

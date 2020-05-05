@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import GridTeams from '../../components/GridTeams';
 import GridPreferences from '../../components/GridPreferences';
 import PreferenceButton from '../../components/Button/Preference';
@@ -118,7 +118,8 @@ const content: Array<PreferenceContent> = [
 ];
 
 const Preferences: React.FC = () => {
-  const [prefIndex, setPrefIndex] = useState(2);
+  const history = useHistory();
+  const [prefIndex, setPrefIndex] = useState(0);
   const [selected, setSelected] = useState<string[]>([]);
 
   const { options, title, subtitle, subtitleHighlight } = content[prefIndex];
@@ -129,11 +130,41 @@ const Preferences: React.FC = () => {
   };
 
   const goHome = () => {
-    window.open('/');
+    const localStoragePrefs = localStorage.getItem('preferences');
+    const preferences = localStoragePrefs
+      ? JSON.parse(localStoragePrefs)
+      : { realities: [], teams: [] };
+
+    localStorage.setItem(
+      'preferences',
+      JSON.stringify({
+        ...preferences,
+        teams: selected,
+      }),
+    );
+
+    history.push('/dashboard');
   };
 
   const goFoward = () => {
+    const localStoragePrefs = localStorage.getItem('preferences');
+    const preferences = localStoragePrefs
+      ? JSON.parse(localStoragePrefs)
+      : { realities: [], teams: [] };
+
+    const realities = [...preferences.realities, ...selected].filter(
+      (pref, index, array) => array.indexOf(pref) === index,
+    );
+
+    localStorage.setItem(
+      'preferences',
+      JSON.stringify({
+        teams: preferences.teams,
+        realities,
+      }),
+    );
     setPrefIndex(prefIndex + 1);
+    setSelected([]);
   };
 
   const onItemSelected = (name: string) => {
@@ -147,11 +178,11 @@ const Preferences: React.FC = () => {
   const renderButtons = () => {
     if (prefIndex === content.length - 1) {
       return (
-        <Link to="/">
-          <PreferenceButton onclick={() => {}} stateType="subscribe">
-            Salvar preferências
-          </PreferenceButton>
-        </Link>
+        // <Link to="/">
+        <PreferenceButton onclick={() => goHome()} stateType="subscribe">
+          Salvar preferências
+        </PreferenceButton>
+        // </Link>
       );
     }
     if (prefIndex === 0) {

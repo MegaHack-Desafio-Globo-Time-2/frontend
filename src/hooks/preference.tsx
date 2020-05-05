@@ -16,15 +16,20 @@ interface Item {
   desc: string;
 }
 
+interface Preference {
+  realities: string[];
+  teams: string[];
+}
+
 interface PreferenceState {
-  preferences: string[];
+  preferences: Preference;
   items: Item[];
 }
 
 interface PreferenceContextData {
   setPreferences(preferences: string[]): Promise<void>;
   items: Item[];
-  preferences: string[];
+  preferences: Preference;
 }
 
 const PreferenceContext = createContext<PreferenceContextData>(
@@ -33,8 +38,8 @@ const PreferenceContext = createContext<PreferenceContextData>(
 
 const PreferenceProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<PreferenceState>(() => {
-    // const preferences = localStorage.getItem('@Globo:preference');
-    const preferences = '[]';
+    const preferences = localStorage.getItem('preferences');
+    // const preferences = '[]';
     const items: Item[] = [
       {
         id: '0',

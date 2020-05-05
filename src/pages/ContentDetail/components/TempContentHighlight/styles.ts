@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-right: 32px;
-  width: 370px;
+  margin-top: 30px;
+  min-height: 30.9375vw;
+  background-color: #000;
 `;

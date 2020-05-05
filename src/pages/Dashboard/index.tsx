@@ -28,15 +28,18 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     showHeader(true);
-    const filterItems = items.filter((item) =>
-      item.categories.includes('reality'),
-    );
+  }, [showHeader]);
 
-    // const found = arr1.some(r=> arr2.includes(r));
+  useEffect(() => {
+    const filterItems = [];
+    preferences.realities.length > 0 && filterItems.push(items[0]);
+    preferences.teams.length > 0 && filterItems.push(items[1]);
 
-    console.log('filter', filterItems, items);
+    // // const found = arr1.some(r=> arr2.includes(r));
+
+    // console.log('filter', filterItems, items);
     filterItems && setFiltered([...filterItems]);
-  }, [preferences]);
+  }, [preferences, showHeader, items]);
 
   return (
     <>
@@ -45,7 +48,7 @@ const Dashboard: React.FC = () => {
         transtorno
       </Hightlight>
       <Offer>
-        <Slider items={filtered} />
+        <Slider isTC={false} items={filtered} />
       </Offer>
     </>
   );

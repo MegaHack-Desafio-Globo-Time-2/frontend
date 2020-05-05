@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.img`
-  width: 15%;
+  width: 100%;
   /* margin: 3%; */
 
   & + img {

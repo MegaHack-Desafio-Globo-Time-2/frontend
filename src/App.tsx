@@ -10,11 +10,12 @@ import AppProvider from './hooks';
 import { useShowHeader } from './hooks/showHeader';
 
 const App: React.FC = () => {
+  const { headerIsShow } = useShowHeader();
   return (
     <>
       <BrowserRouter>
         <AppProvider>
-          {useShowHeader().headerIsShow && <Header />}
+          {headerIsShow && <Header />}
 
           <Routes />
         </AppProvider>

@@ -10,9 +10,12 @@ const HeaderContext = createContext<HeaderContextData>({} as HeaderContextData);
 const HeaderProvider: React.FC = ({ children }) => {
   const [data, setData] = useState(false);
 
-  const showHeader = useCallback(async (show) => {
-    setData(show);
-  }, []);
+  const showHeader = useCallback(
+    async (show) => {
+      setData(show);
+    },
+    [data],
+  );
 
   return (
     <HeaderContext.Provider

@@ -5,6 +5,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Container, Header, Track, Title } from './styles';
 import SliderItem from './SliderItem';
+import TCItem from '../TCItem';
 
 interface Item {
   title: string;
@@ -20,9 +21,10 @@ interface CustomSliderProps {
   items: Item[];
   width?: string;
   hasTitles?: boolean;
+  isTC?: boolean;
 }
 
-const CustomSlider: React.FC<CustomSliderProps> = ({ items }) => {
+const CustomSlider: React.FC<CustomSliderProps> = ({ items, isTC = false }) => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 40;
 
@@ -33,9 +35,13 @@ const CustomSlider: React.FC<CustomSliderProps> = ({ items }) => {
         <FaChevronRight size={16} color="#fff" />
       </Header>
       <Track>
-        {items.map((item) => (
-          <SliderItem data={item} />
-        ))}
+        {items.map((item) =>
+          isTC ? (
+            <SliderItem key={item.title} data={item} />
+          ) : (
+            <TCItem key={item.title} data={item} />
+          ),
+        )}
       </Track>
     </Container>
   );
