@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 
+import GridTeams from '../../components/GridTeams';
 import GridPreferences from '../../components/GridPreferences';
 import PreferenceButton from '../../components/Button/Preference';
+
+import atheletico from '../../assets/serieA/Athletico-PR.svg';
 
 import {
   FullPage,
@@ -83,12 +86,38 @@ const content: Array<PreferenceContent> = [
       'Religião',
     ],
   },
+  {
+    title: '4 Escolha seus |times| favoritos',
+    subtitle:
+      'Escolha seus times preferidos, assim podemos criar uma melhor recomendação.',
+    subtitleHighlight: 'Clique nas categorias que você gosta!',
+    options: [
+      'Athletico Paranaense',
+      'Athletico Goianiense',
+      'Athletico Mineiro',
+      'Bahia',
+      'Botafogo',
+      'Bragrantino',
+      'Ceara',
+      'Corinthians',
+      'Coritiba',
+      'Flamengo',
+      'Fluminense',
+      'Goias',
+      'Grêmio',
+      'Internacional',
+      'Palmeiras',
+      'Santos',
+      'São Paulo',
+      'Sport',
+      'Vasco',
+    ],
+  },
 ];
 
 const Preferences: React.FC = () => {
-  const [prefIndex, setPrefIndex] = useState(0);
+  const [prefIndex, setPrefIndex] = useState(2);
   const [selected, setSelected] = useState<string[]>([]);
-  console.log('PREF IST', prefIndex);
 
   const { options, title, subtitle, subtitleHighlight } = content[prefIndex];
   const [titleBegin, titleHightlight, titleEnd] = title.split('|');
@@ -158,11 +187,19 @@ const Preferences: React.FC = () => {
           {subtitle}
           <DescriptionHighlight>{subtitleHighlight}</DescriptionHighlight>
         </Description>
-        <GridPreferences
-          contentList={options}
-          onItemSelected={onItemSelected}
-          selectedItens={selected}
-        />
+        {prefIndex !== content.length - 1 ? (
+          <GridPreferences
+            contentList={options}
+            onItemSelected={onItemSelected}
+            selectedItens={selected}
+          />
+        ) : (
+          <GridTeams
+            contentList={options}
+            onItemSelected={onItemSelected}
+            selectedItens={selected}
+          />
+        )}
         <ButtonsContainer>{renderButtons()}</ButtonsContainer>
       </CenterContainer>
     </FullPage>

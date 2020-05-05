@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FullPage = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   position: relative;
 `;
@@ -36,6 +36,7 @@ export const DescriptionHighlight = styled.span`
 
 export const ButtonsContainer = styled.div`
   margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export const PreviousDiv = styled.span`
