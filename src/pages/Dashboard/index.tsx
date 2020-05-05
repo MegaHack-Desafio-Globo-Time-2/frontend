@@ -33,8 +33,8 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     const filterItems = [];
-    preferences.realities.length > 0 && filterItems.push(items[0]);
-    preferences.teams.length > 0 && filterItems.push(items[1]);
+    preferences?.realities.length > 0 && filterItems.push(items[0]);
+    preferences?.teams.length > 0 && filterItems.push(items[1]);
 
     filterItems && setFiltered([...filterItems]);
   }, [preferences, showHeader, items]);

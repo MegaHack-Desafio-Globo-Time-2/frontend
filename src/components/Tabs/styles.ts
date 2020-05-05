@@ -29,6 +29,6 @@ export const TabItem = styled.li`
   }
 
   &.tudoConectado {
-    border-bottom: 4px solid #333;
+    border-bottom: 4px solid rgb(243, 29, 29);
   }
 `;

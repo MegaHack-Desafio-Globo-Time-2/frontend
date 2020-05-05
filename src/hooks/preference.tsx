@@ -72,15 +72,9 @@ const PreferenceProvider: React.FC = ({ children }) => {
 
   const setPreferences = useCallback(async ({ preferences }) => {
     // localStorage.setItem('@Globo:token', token);
-    localStorage.setItem('@Globo:preferences', JSON.stringify(preferences));
+    localStorage.setItem('preferences', JSON.stringify(preferences));
 
     setData({ ...data, preferences });
-  }, []);
-
-  const preference = useCallback(() => {
-    localStorage.removeItem('@GoBarber:token');
-
-    setData({} as PreferenceState);
   }, []);
 
   return (
